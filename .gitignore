@@ -1,0 +1,17 @@
+# Build
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.log
+
+# VS settings
+.vscode/
+*.vs
+
+# App config
+appsettings.*.json
+
+# EF generated
+Migrations/
