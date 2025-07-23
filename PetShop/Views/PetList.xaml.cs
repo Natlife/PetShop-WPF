@@ -20,9 +20,54 @@ namespace PetShop.Views
     /// </summary>
     public partial class PetList : UserControl
     {
-        public PetList()
+        private readonly PetShopDbContext _context = new();
+        private readonly User _user;
+
+        public PetList(User user)
         {
             InitializeComponent();
+            _user = user;
+            LoadPets();
+        }
+
+        private void LoadPets()
+        {
+            PetGrid.ItemsSource = _context.Pets.Where(p => p.UserId == _user.UserId).ToList();
+        }
+
+        private void AddPet_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string name = NameBox.Text;
+                string species = SpeciesBox.Text;
+                string breed = BreedBox.Text;
+                string color = ColorBox.Text;
+                string gender = (GenderBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+                double weight = double.TryParse(WeightBox.Text, out var w) ? w : 0;
+
+                var newPet = new Pet
+                {
+                    UserId = _user.UserId,
+                    Name = name,
+                    Species = species,
+                    Breed = breed,
+                    Gender = gender,
+                    Color = color,
+                    Weight = weight,
+                    CreatedAt = DateTime.Now
+                };
+
+                _context.Pets.Add(newPet);
+                _context.SaveChanges();
+                MessageBox.Show("Đã thêm thú cưng!");
+
+                LoadPets();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi thêm thú cưng: " + ex.Message);
+            }
         }
     }
 }
