@@ -81,5 +81,13 @@ namespace PetShop.Views
 
             MessageBox.Show("Đặt lịch thành công!");
         }
+        private void Book_Click(object sender, RoutedEventArgs e)
+        {
+            var parentWindow = Window.GetWindow(this) as UserHome;
+            if (parentWindow != null)
+            {
+                parentWindow.MainContent.Content = new BookingForm(_user);
+            }
+        }
     }
 }

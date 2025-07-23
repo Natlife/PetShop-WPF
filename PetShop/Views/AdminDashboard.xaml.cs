@@ -20,14 +20,24 @@ namespace PetShop.Views
     /// </summary>
     public partial class AdminDashboard : Window
     {
+        private readonly User _currentUser;
+
         public AdminDashboard(User user)
         {
             InitializeComponent();
-            ShowProducts();
+            _currentUser = user;
+            ShowDashboard();
         }
 
         public AdminDashboard()
         {
+            InitializeComponent();
+            ShowDashboard(); 
+        }
+
+        private void ShowDashboard()
+        {
+            MainContent.Content = new AdminDashboardControl(); 
         }
 
         private void ShowProducts()

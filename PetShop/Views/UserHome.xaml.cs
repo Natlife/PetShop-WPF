@@ -58,5 +58,6 @@ namespace PetShop.Views
         private void ShowService_Click(object sender, RoutedEventArgs e) => ShowService();
         private void ShowPets_Click(object sender, RoutedEventArgs e) => ShowPets();
         private void ShowCart_Click(object sender, RoutedEventArgs e) => ShowCart();
+
     }
 }

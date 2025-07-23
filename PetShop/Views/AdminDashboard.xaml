@@ -6,18 +6,24 @@
         xmlns:local="clr-namespace:PetShop.Views"
         mc:Ignorable="d"
         Title="AdminDashboard" Height="450" Width="800">
-    <DockPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <StackPanel DockPanel.Dock="Left" Width="200" Background="#eee" Margin="10">
-            <TextBlock Text="Luong Pet Shop (Admin)" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
-            <Button Content="📦 Sản phẩm" Margin="0,5" Click="ShowProducts_Click"/>
-            <Button Content="🧴 Dịch vụ" Margin="0,5" Click="ShowServices_Click"/>
-            <Button Content="🧾 Đơn hàng" Margin="0,5" Click="ShowOrders_Click"/>
-            <Button Content="📅 Lịch hẹn" Margin="0,5" Click="ShowBookings_Click"/>
-            <Button Content="🚪 Thoát" Margin="0,30,0,0" Click="Logout_Click"/>
+
+        <StackPanel Background="#333" Grid.Column="0">
+            <TextBlock Text="PET SHOP ADMIN" Foreground="White" FontSize="16"
+                       FontWeight="Bold" Margin="10" TextAlignment="Center"/>
+            <Button Content="📦 Sản phẩm" Click="ShowProducts_Click" Margin="10" />
+            <Button Content="🛠 Dịch vụ" Click="ShowServices_Click" Margin="10"/>
+            <Button Content="🧾 Đơn hàng" Click="ShowOrders_Click" Margin="10"/>
+            <Button Content="📅 Đặt lịch" Click="ShowBookings_Click" Margin="10"/>
+            <Button Content="🚪 Đăng xuất" Click="Logout_Click" Margin="10" Background="Tomato"/>
         </StackPanel>
 
 
-        <ContentControl x:Name="MainContent" />
-    </DockPanel>
+        <ContentControl x:Name="MainContent" Grid.Column="1" Margin="10"/>
+    </Grid>
 </Window>
