@@ -7,11 +7,17 @@
         mc:Ignorable="d"
         Title="UserHome" Height="450" Width="800">
     <DockPanel>
-        <StackPanel Background="#eeeeee" Width="150" DockPanel.Dock="Left">
-            <Button Content="Sản phẩm" Click="BtnProduct_Click" Margin="10"/>
-            <Button Content="Dịch vụ" Click="BtnService_Click" Margin="10"/>
+        <!-- Sidebar -->
+        <StackPanel DockPanel.Dock="Left" Width="180" Background="#eee" Margin="10">
+            <TextBlock Text="Luong Pet Shop" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+            <Button Content=" Mua hàng" Margin="0,5" Click="ShowProduct_Click"/>
+            <Button Content=" Đặt dịch vụ" Margin="0,5" Click="ShowService_Click"/>
+            <Button Content=" Quản lý thú cưng" Margin="0,5" Click="ShowPets_Click"/>
+            <Button Content=" Giỏ hàng" Margin="0,5" Click="ShowCart_Click"/>
+            <Button Content=" Thoát" Margin="0,30,0,0" Click="Logout_Click"/>
         </StackPanel>
 
-        <ContentControl x:Name="MainContent"/>
+        <!-- Content -->
+        <ContentControl x:Name="MainContent" />
     </DockPanel>
 </Window>

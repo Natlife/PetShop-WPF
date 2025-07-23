@@ -53,7 +53,11 @@ namespace PetShop.Views
 
                 btn.Click += (s, e) =>
                 {
-                    // TODO: xử lý thêm vào giỏ hàng sau
+                    var existing = CartView.CartItems.FirstOrDefault(i => i.Product.ProductId == product.ProductId);
+                    if (existing != null)
+                        existing.Quantity++;
+                    else
+                        CartView.CartItems.Add(new CartItem { Product = product, Quantity = 1 });
                     MessageBox.Show($"Đã thêm \"{product.Name}\" vào giỏ!", "Thông báo");
                 };
 

@@ -20,22 +20,43 @@ namespace PetShop.Views
     /// </summary>
     public partial class UserHome : Window
     {
-        private readonly User _currentUser;
+        private readonly User _user;
+
         public UserHome(User user)
         {
             InitializeComponent();
-            _currentUser = user;
-            MainContent.Content = new ProductList(); // reuse ProductList view
+            _user = user;
+            ShowProduct();
         }
 
-        private void BtnProduct_Click(object sender, RoutedEventArgs e)
+        private void ShowProduct()
         {
-            MainContent.Content = new ProductList();
+            MainContent.Content = new UserProductView();
         }
 
-        private void BtnService_Click(object sender, RoutedEventArgs e)
+        private void ShowService()
         {
-            MainContent.Content = new ServiceList(currentUser: _currentUser);
+            MainContent.Content = new UserServiceBookingView(_user);
         }
+
+        private void ShowPets()
+        {
+            MainContent.Content = new PetList(_user);
+        }
+
+        private void ShowCart()
+        {
+            MainContent.Content = new CartView(_user);
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void ShowProduct_Click(object sender, RoutedEventArgs e) => ShowProduct();
+        private void ShowService_Click(object sender, RoutedEventArgs e) => ShowService();
+        private void ShowPets_Click(object sender, RoutedEventArgs e) => ShowPets();
+        private void ShowCart_Click(object sender, RoutedEventArgs e) => ShowCart();
     }
 }
