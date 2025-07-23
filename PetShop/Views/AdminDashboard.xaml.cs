@@ -20,30 +20,44 @@ namespace PetShop.Views
     /// </summary>
     public partial class AdminDashboard : Window
     {
-        public AdminDashboard(User currentUser)
+        public AdminDashboard(User user)
         {
             InitializeComponent();
-            MainContent.Content = new ProductList();
+            ShowProducts();
         }
 
-        private void BtnProduct_Click(object sender, RoutedEventArgs e)
+        public AdminDashboard()
         {
-            MainContent.Content = new ProductList();
         }
 
-        private void BtnService_Click(object sender, RoutedEventArgs e)
+        private void ShowProducts()
         {
-            MainContent.Content = new ServiceList();
+            MainContent.Content = new ProductManager();
         }
 
-        private void BtnOrder_Click(object sender, RoutedEventArgs e)
+        private void ShowServices()
         {
-            MainContent.Content = new OrderManagement();
+            MainContent.Content = new ServiceManager();
         }
 
-        private void BtnBooking_Click(object sender, RoutedEventArgs e)
+        private void ShowOrders()
         {
-            MainContent.Content = new BookingManagement();
+            MainContent.Content = new OrderManager();
         }
+
+        private void ShowBookings()
+        {
+            MainContent.Content = new BookingManager();
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            Close(); 
+        }
+
+        private void ShowProducts_Click(object sender, RoutedEventArgs e) => ShowProducts();
+        private void ShowServices_Click(object sender, RoutedEventArgs e) => ShowServices();
+        private void ShowOrders_Click(object sender, RoutedEventArgs e) => ShowOrders();
+        private void ShowBookings_Click(object sender, RoutedEventArgs e) => ShowBookings();
     }
 }

@@ -7,13 +7,17 @@
         mc:Ignorable="d"
         Title="AdminDashboard" Height="450" Width="800">
     <DockPanel>
-        <StackPanel Background="#2D2D30" Width="200" DockPanel.Dock="Left">
-            <Button Content="Sản phẩm" Click="BtnProduct_Click" Margin="10" />
-            <Button Content="Dịch vụ" Click="BtnService_Click" Margin="10" />
-            <Button Content="Đơn hàng" Click="BtnOrder_Click" Margin="10" />
-            <Button Content="Lịch đặt" Click="BtnBooking_Click" Margin="10" />
+
+        <StackPanel DockPanel.Dock="Left" Width="200" Background="#eee" Margin="10">
+            <TextBlock Text="Luong Pet Shop (Admin)" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+            <Button Content="📦 Sản phẩm" Margin="0,5" Click="ShowProducts_Click"/>
+            <Button Content="🧴 Dịch vụ" Margin="0,5" Click="ShowServices_Click"/>
+            <Button Content="🧾 Đơn hàng" Margin="0,5" Click="ShowOrders_Click"/>
+            <Button Content="📅 Lịch hẹn" Margin="0,5" Click="ShowBookings_Click"/>
+            <Button Content="🚪 Thoát" Margin="0,30,0,0" Click="Logout_Click"/>
         </StackPanel>
 
-        <ContentControl x:Name="MainContent"/>
+
+        <ContentControl x:Name="MainContent" />
     </DockPanel>
 </Window>

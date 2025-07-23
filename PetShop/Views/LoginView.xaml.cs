@@ -39,7 +39,7 @@ namespace PetShop.Views
 
                 if (user.Role == "Admin")
                 {
-                    var adminWindow = new AdminDashboard(user);
+                    var adminWindow = new AdminDashboard();
                     adminWindow.Show();
                 }
                 else

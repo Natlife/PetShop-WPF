@@ -8,7 +8,7 @@
         Title="UserHome" Height="450" Width="800">
     <DockPanel>
         <!-- Sidebar -->
-        <StackPanel DockPanel.Dock="Left" Width="180" Background="#eee" Margin="10">
+        <StackPanel DockPanel.Dock="Left" Width="200" Background="#eee" Margin="10">
             <TextBlock Text="Luong Pet Shop" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
             <Button Content=" Mua hàng" Margin="0,5" Click="ShowProduct_Click"/>
             <Button Content=" Đặt dịch vụ" Margin="0,5" Click="ShowService_Click"/>
