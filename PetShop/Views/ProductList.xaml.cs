@@ -18,7 +18,7 @@ namespace PetShop.Views
     /// <summary>
     /// Interaction logic for ProductList.xaml
     /// </summary>
-    public partial class ProductList : Window
+    public partial class ProductList : UserControl
     {
         private readonly PetShopDbContext _context = new();
 

@@ -7,13 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
         <DataGrid x:Name="BookingGrid" AutoGenerateColumns="False" IsReadOnly="True"
-                  SelectionMode="Single" Margin="0,0,0,10">
+                  SelectionMode="Single" Margin="0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding BookingId}" Width="50"/>
                 <DataGridTextColumn Header="Khách hàng" Binding="{Binding User.FullName}" Width="150"/>
@@ -21,13 +16,26 @@
                 <DataGridTextColumn Header="Dịch vụ" Binding="{Binding Service.Name}" Width="150"/>
                 <DataGridTextColumn Header="Thời gian" Binding="{Binding BookingTime}" Width="150"/>
                 <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="100"/>
+
+                <!-- 🧩 Cột chứa 3 nút hành động -->
+                <DataGridTemplateColumn Header="Hành động" Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button Content="✔️" Width="40" Margin="2"
+                                        Click="ApproveRow_Click"
+                                        Tag="{Binding}" ToolTip="Duyệt"/>
+                                <Button Content="✅" Width="40" Margin="2"
+                                        Click="CompleteRow_Click"
+                                        Tag="{Binding}" ToolTip="Hoàn thành"/>
+                                <Button Content="❌" Width="40" Margin="2"
+                                        Click="CancelRow_Click"
+                                        Tag="{Binding}" ToolTip="Huỷ"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="✔️ Duyệt" Width="100" Margin="5" Click="Approve_Click"/>
-            <Button Content="✅ Hoàn thành" Width="100" Margin="5" Click="Complete_Click"/>
-            <Button Content="❌ Huỷ" Width="100" Margin="5" Click="Cancel_Click"/>
-        </StackPanel>
     </Grid>
 </UserControl>

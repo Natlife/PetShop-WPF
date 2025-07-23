@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PetShop.Views"
         mc:Ignorable="d"
-        Title="UserHome" Height="450" Width="800">
+        Title="UserHome" Height="336" Width="auto" d:DesignWidth="744.792">
     <DockPanel>
         <!-- Sidebar -->
         <StackPanel DockPanel.Dock="Left" Width="200" Background="#eee" Margin="10">

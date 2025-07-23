@@ -1,4 +1,5 @@
-﻿using PetShop.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PetShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,9 @@ namespace PetShop.Views
     /// <summary>
     /// Interaction logic for BookingManagement.xaml
     /// </summary>
-    public partial class BookingManagement : Window
+    public partial class BookingManagement : UserControl
     {
-        private readonly PetShopDbContext _context = new();
+        private readonly PetShopDbContext _context = new();     
 
         public BookingManagement()
         {

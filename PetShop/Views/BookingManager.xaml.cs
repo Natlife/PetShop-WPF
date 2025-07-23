@@ -44,46 +44,48 @@ namespace PetShop.Views
                 }).ToList();
         }
 
-        private void UpdateStatus(string newStatus)
+        private void UpdateStatus(dynamic bookingItem, string newStatus)
         {
-            if (BookingGrid.SelectedItem is not null)
+            if (bookingItem == null) return;
+
+            int bookingId = bookingItem.BookingId;
+            var booking = _context.Bookings.FirstOrDefault(b => b.BookingId == bookingId);
+            if (booking != null)
             {
-                var selected = BookingGrid.SelectedItem;
-                var bookingIdProperty = selected.GetType().GetProperty("BookingId");
-                if (bookingIdProperty != null)
+                booking.Status = newStatus;
+                _context.SaveChanges();
+                LoadBookings();
+            }
+        }
+
+        private void ApproveRow_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.Tag != null)
+            {
+                var bookingItem = btn.Tag;
+                UpdateStatus(bookingItem, "Approved");
+            }
+        }
+
+        private void CompleteRow_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.Tag != null)
+            {
+                var bookingItem = btn.Tag;
+                UpdateStatus(bookingItem, "Completed");
+            }
+        }
+
+        private void CancelRow_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.Tag != null)
+            {
+                var bookingItem = btn.Tag;
+                var result = MessageBox.Show("Bạn có chắc muốn huỷ lịch này?", "Xác nhận", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
                 {
-                    int id = (int)bookingIdProperty.GetValue(selected);
-                    var booking = _context.Bookings.FirstOrDefault(b => b.BookingId == id);
-                    if (booking != null)
-                    {
-                        booking.Status = newStatus;
-                        _context.SaveChanges();
-                        LoadBookings();
-                    }
+                    UpdateStatus(bookingItem, "Cancelled");
                 }
-            }
-            else
-            {
-                MessageBox.Show("Chọn một lịch đặt trước.");
-            }
-        }
-
-        private void Approve_Click(object sender, RoutedEventArgs e)
-        {
-            UpdateStatus("Approved");
-        }
-
-        private void Complete_Click(object sender, RoutedEventArgs e)
-        {
-            UpdateStatus("Completed");
-        }
-
-        private void Cancel_Click(object sender, RoutedEventArgs e)
-        {
-            var result = MessageBox.Show("Bạn có chắc muốn huỷ lịch này?", "Xác nhận", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
-            {
-                UpdateStatus("Cancelled");
             }
         }
     }

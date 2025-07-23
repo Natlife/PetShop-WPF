@@ -18,7 +18,7 @@ namespace PetShop.Views
     /// <summary>
     /// Interaction logic for ServiceList.xaml
     /// </summary>
-    public partial class ServiceList : Window
+    public partial class ServiceList : UserControl
     {
         private readonly PetShopDbContext _context = new();
 

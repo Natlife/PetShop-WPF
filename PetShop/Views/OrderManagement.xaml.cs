@@ -19,7 +19,7 @@ namespace PetShop.Views
     /// <summary>
     /// Interaction logic for OrderManagement.xaml
     /// </summary>
-    public partial class OrderManagement : Window
+    public partial class OrderManagement : UserControl
     {
         private readonly PetShopDbContext _context = new();
 
