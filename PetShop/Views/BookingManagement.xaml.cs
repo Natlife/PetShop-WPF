@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PetShop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,24 @@ namespace PetShop.Views
     /// </summary>
     public partial class BookingManagement : Window
     {
+        private readonly PetShopDbContext _context = new();
+
         public BookingManagement()
         {
             InitializeComponent();
+            LoadBookings();
+        }
+
+        private void LoadBookings()
+        {
+            var bookings = _context.Bookings
+                .Include(b => b.User)
+                .Include(b => b.Service)
+                .Include(b => b.Pet)
+                .OrderByDescending(b => b.BookingTime)
+                .ToList();
+
+            BookingGrid.ItemsSource = bookings;
         }
     }
 }

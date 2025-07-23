@@ -1,11 +1,11 @@
-﻿<Window x:Class="PetShop.Views.OrderManagement"
+﻿<UserControl  x:Class="PetShop.Views.OrderManagement"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PetShop.Views"
         mc:Ignorable="d"
-        Title="OrderManagement" Height="450" Width="800">
+         Height="450" Width="800">
     <Grid Margin="10">
         <StackPanel>
             <TextBlock Text="Quản lý đơn hàng" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"/>
@@ -19,4 +19,4 @@
             </DataGrid>
         </StackPanel>
     </Grid>
-</Window>
+</UserControl>
