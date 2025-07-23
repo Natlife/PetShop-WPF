@@ -1,0 +1,17 @@
+﻿<Window x:Class="PetShop.Views.UserHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PetShop.Views"
+        mc:Ignorable="d"
+        Title="UserHome" Height="450" Width="800">
+    <DockPanel>
+        <StackPanel Background="#eeeeee" Width="150" DockPanel.Dock="Left">
+            <Button Content="Sản phẩm" Click="BtnProduct_Click" Margin="10"/>
+            <Button Content="Dịch vụ" Click="BtnService_Click" Margin="10"/>
+        </StackPanel>
+
+        <ContentControl x:Name="MainContent"/>
+    </DockPanel>
+</Window>
