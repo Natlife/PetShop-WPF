@@ -11,25 +11,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout source code
+    - name:  Checkout source code
       uses: actions/checkout@v3
 
-    - name: Setup .NET
+    - name:  Setup .NET 8
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.x
 
-    - name: Restore dependencies
-      run: dotnet restore
+    - name:  Restore dependencies
+      run: dotnet restore ./PetShopConsole/PetShopConsole.csproj
 
-    - name: Build
-      run: dotnet build ./PetShopConsole/PetShopConsole.csproj
+    - name:  Build console app
+      run: dotnet build ./PetShopConsole/PetShopConsole.csproj --configuration Release
 
-    - name: Publish
-      run: dotnet publish -c Release -o out
+    - name:  Publish console app
+      run: dotnet publish ./PetShopConsole/PetShopConsole.csproj -c Release -o ./publish
 
-    - name: Upload artifact
+    - name:  Upload published artifact
       uses: actions/upload-artifact@v4
       with:
         name: petshop-console-output
-        path: ./out
+        path: ./publish
