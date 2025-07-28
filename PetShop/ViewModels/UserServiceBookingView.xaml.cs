@@ -77,6 +77,16 @@ namespace PetShop.Views
             };
 
             _context.Bookings.Add(booking);
+
+            //var invoice = new Invoice
+            //{
+            //    UserId = booking.UserId,
+            //    OrderId = null,
+            //    InvoiceDate = DateTime.Now,
+            //    TotalAmount = (decimal)selectedService.Price,
+            //    Notes = "Dich vu"
+            //};
+            //_context.Invoices.Add(invoice);
             _context.SaveChanges();
 
             MessageBox.Show("Đặt lịch thành công!");

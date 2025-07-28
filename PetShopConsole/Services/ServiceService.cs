@@ -18,6 +18,22 @@ namespace PetShopConsole.Services
                 Console.WriteLine($"[{s.ServiceId}] {s.Name} - {s.Price}đ ({s.Duration} phút)");
             }
         }
+        public static void ViewInvoices(PetShopDbContext context, int userId)
+        {
+            var invoices = context.Invoices.Where(i => i.UserId == userId).ToList();
+
+            if (!invoices.Any())
+            {
+                Console.WriteLine("Bạn chưa có hóa đơn nào.");
+                return;
+            }
+
+            Console.WriteLine("📄 Danh sách hóa đơn:");
+            foreach (var invoice in invoices)
+            {
+                Console.WriteLine($"Mã hóa đơn: {invoice.InvoiceId}, Ngày tạo: {invoice.CreatedAt}, Tổng tiền: {invoice.TotalAmount} VND");
+            }
+        }
 
         public static void BookService(User user, PetShopDbContext context)
         {

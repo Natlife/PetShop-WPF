@@ -22,6 +22,7 @@ namespace PetShopConsole.Menus
                 Console.WriteLine("4. Đặt lịch dịch vụ");
                 Console.WriteLine("5. Xem thú cưng");
                 Console.WriteLine("6. Thêm thú cưng");
+                Console.WriteLine("7. Xem hoa don");
                 Console.WriteLine("0. Thoát");
 
                 Console.Write("Chọn: ");
@@ -45,6 +46,9 @@ namespace PetShopConsole.Menus
                         break;
                     case "6":
                         PetService.AddPet(user, context);
+                        break;
+                    case "7":
+                        ServiceService.ViewInvoices(context,user.UserId);
                         break;
                     case "0":
                         return;

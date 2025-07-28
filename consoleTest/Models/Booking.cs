@@ -11,15 +11,15 @@ public partial class Booking
 
     public int ServiceId { get; set; }
 
-    public int PetId { get; set; }
-
     public DateTime BookingTime { get; set; }
 
     public string? Notes { get; set; }
 
     public string? Status { get; set; }
 
-    public virtual Pet Pet { get; set; } = null!;
+    public int? PetId { get; set; }
+
+    public virtual Pet? Pet { get; set; }
 
     public virtual Service Service { get; set; } = null!;
 

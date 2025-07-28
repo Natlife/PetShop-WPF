@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using consoleTest.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using PetShop.Models;
 using System;
 using System.Collections.Generic;
-using consoleTest.Models;
 
 namespace PetShopConsole.Data;
 
@@ -20,7 +20,6 @@ public partial class PetShopDbContext : DbContext
     {
     }
     public List<Invoice> Invoices { get; set; } = new();
-
 
     public virtual DbSet<Booking> Bookings { get => bookings; set => bookings = value; }
 

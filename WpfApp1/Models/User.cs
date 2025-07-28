@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PetShop.Models;
+namespace WpfApp1.Models;
 
 public partial class User
 {

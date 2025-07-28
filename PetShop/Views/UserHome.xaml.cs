@@ -53,7 +53,11 @@ namespace PetShop.Views
         {
             Close();
         }
-
+        private void ShowInvoices()
+        {
+            MainContent.Content = new UserInvoiceView(_user);
+        }
+        private void ShowInvoices_Click(object sender, RoutedEventArgs e) => ShowInvoices();
         private void ShowProduct_Click(object sender, RoutedEventArgs e) => ShowProduct();
         private void ShowService_Click(object sender, RoutedEventArgs e) => ShowService();
         private void ShowPets_Click(object sender, RoutedEventArgs e) => ShowPets();

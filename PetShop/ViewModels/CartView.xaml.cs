@@ -71,7 +71,15 @@ namespace PetShop.Views
                 var product = _context.Products.Find(item.Product.ProductId);
                 if (product != null) product.Stock -= item.Quantity;
             }
-
+            var invoice = new Invoice
+            {
+                UserId = order.UserId,
+                OrderId = order.OrderId,
+                InvoiceDate = DateTime.Now,
+                TotalAmount = (decimal)order.TotalAmount,
+                Notes = "Mua Hang"
+            };
+            _context.Invoices.Add(invoice);
             _context.SaveChanges();
             CartItems.Clear();
             LoadCart();

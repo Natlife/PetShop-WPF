@@ -14,6 +14,7 @@
             <Button Content=" Đặt dịch vụ" Margin="0,5" Click="ShowService_Click"/>
             <Button Content=" Quản lý thú cưng" Margin="0,5" Click="ShowPets_Click"/>
             <Button Content=" Giỏ hàng" Margin="0,5" Click="ShowCart_Click"/>
+            <Button Content=" Hóa đơn" Click="ShowInvoices_Click" />
             <Button Content=" Thoát" Margin="0,30,0,0" Click="Logout_Click"/>
         </StackPanel>
 
