@@ -1,4 +1,5 @@
-﻿using PetShop.Models;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using PetShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,14 +21,16 @@ namespace PetShop.Views
     /// </summary>
     public partial class UserHome : Window
     {
-        private readonly User _user;
+        private readonly Models.User _user;
+        private Models.User user;
 
-        public UserHome(User user)
+        public UserHome(Models.User user)
         {
             InitializeComponent();
             _user = user;
             ShowProduct();
         }
+
 
         private void ShowProduct()
         {
@@ -51,7 +54,9 @@ namespace PetShop.Views
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            var userWindow = new LoginView();
+            userWindow.Show();
+            this.Close();
         }
         private void ShowInvoices()
         {
