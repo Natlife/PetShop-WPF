@@ -1,18 +1,18 @@
-﻿<Window x:Class="PetShop.Views.ServiceForm"
+﻿<UserControl x:Class="PetShop.Views.ServiceForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PetShop.Views"
         mc:Ignorable="d"
-        Title="ServiceForm" Height="450" Width="800">
+        Height="450" Width="800">
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel>
+        <StackPanel x:Name="serviceForm">
             <TextBlock Text="Tên dịch vụ:"/>
             <TextBox x:Name="NameBox"/>
 
@@ -31,4 +31,4 @@
             <Button Content="Huỷ" Width="80" Margin="5" Click="Cancel_Click"/>
         </StackPanel>
     </Grid>
-</Window>
+</UserControl>

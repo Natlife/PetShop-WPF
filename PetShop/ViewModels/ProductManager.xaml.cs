@@ -36,28 +36,60 @@ namespace PetShop.Views
 
         private void AddProduct_Click(object sender, RoutedEventArgs e)
         {
-            var window = new ProductForm();
-            if (window.ShowDialog() == true)
+            var form = new ProductForm();
+            form.OnSave = (newProduct) =>
             {
-                _context.Products.Add(window.Product);
-                _context.SaveChanges();
-                LoadData();
-            }
+                if(newProduct.Name is null)
+                {
+                    LoadData();
+                    MainContent.Content = null;
+                    
+                }
+                else
+                {
+                    _context.Products.Add(newProduct);
+                    _context.SaveChanges();
+                    LoadData();
+                    MainContent.Content = null;
+                }
+            };
+            form.OnCancel = () => MainContent.Content = null;
+
+            MainContent.Content = form;
+
         }
 
         private void EditProduct_Click(object sender, RoutedEventArgs e)
         {
             if (ProductGrid.SelectedItem is Product selected)
             {
-                var window = new ProductForm(selected);
-                if (window.ShowDialog() == true)
+                var form = new ProductForm(new Product
                 {
-                    _context.Products.Update(window.Product);
+                    ProductId = selected.ProductId,
+                    Name = selected.Name,
+                    Description = selected.Description,
+                    Price = selected.Price,
+                    Stock = selected.Stock
+                });
+
+                form.OnSave = (updatedProduct) =>
+                {
+                    selected.Name = updatedProduct.Name;
+                    selected.Description = updatedProduct.Description;
+                    selected.Price = updatedProduct.Price;
+                    selected.Stock = updatedProduct.Stock;
+
+                    _context.Products.Update(selected);
                     _context.SaveChanges();
                     LoadData();
-                }
+                    MainContent.Content = null;
+                };
+
+                form.OnCancel = () => MainContent.Content = null;
+
+                MainContent.Content = form;
             }
-            else MessageBox.Show("Chọn sản phẩm cần sửa!");
+            else MessageBox.Show("Vui lòng chọn sản phẩm cần sửa!");
         }
 
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)

@@ -18,10 +18,12 @@ namespace PetShop.Views
     /// <summary>
     /// Interaction logic for ProductForm.xaml
     /// </summary>
-    public partial class ProductForm : Window
+    public partial class ProductForm : UserControl
     {
         public Product Product { get; private set; }
         private readonly bool _isEdit;
+        public Action<Product>? OnSave;
+        public Action? OnCancel;
 
         public ProductForm()
         {
@@ -55,13 +57,15 @@ namespace PetShop.Views
             Product.Description = DescriptionBox.Text.Trim();
             Product.Price = price;
             Product.Stock = stock;
+            OnSave?.Invoke(Product);
+            productForm.Visibility = Visibility.Collapsed;
 
-            DialogResult = true;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = false;
+            OnSave?.Invoke(Product);
+            productForm.Visibility = Visibility.Collapsed;
         }
     }
 }

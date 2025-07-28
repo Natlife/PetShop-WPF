@@ -9,6 +9,7 @@
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -17,8 +18,9 @@
             <Button Content="✏️ Sửa" Width="100" Margin="5" Click="EditService_Click"/>
             <Button Content="🗑️ Xoá" Width="100" Margin="5" Click="DeleteService_Click"/>
         </StackPanel>
+        <ContentControl x:Name="MainContent" Grid.Row="1"  Margin="10"/>
 
-        <DataGrid x:Name="ServiceGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single">
+        <DataGrid x:Name="ServiceGrid" Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ServiceId}" Width="50"/>
                 <DataGridTextColumn Header="Tên dịch vụ" Binding="{Binding Name}" Width="200"/>

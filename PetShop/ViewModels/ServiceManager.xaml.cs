@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -19,7 +20,7 @@ namespace PetShop.Views
     /// <summary>
     /// Interaction logic for ServiceManager.xaml
     /// </summary>
-    public partial class ServiceManager : UserControl
+    public partial class ServiceManager : System.Windows.Controls.UserControl
     {
         private readonly PetShopDbContext _context = new();
 
@@ -36,35 +37,67 @@ namespace PetShop.Views
 
         private void AddService_Click(object sender, RoutedEventArgs e)
         {
-            var window = new ServiceForm();
-            if (window.ShowDialog() == true)
+            var form = new ServiceForm();
+            form.OnSave = (newService) =>
             {
-                _context.Services.Add(window.Service);
-                _context.SaveChanges();
-                LoadData();
-            }
+                if (newService.Name is null)
+                {
+                    LoadData();
+                    MainContent.Content = null;
+
+                }
+                else
+                {
+                    _context.Services.Add(newService);
+                    _context.SaveChanges();
+                    LoadData();
+                    MainContent.Content = null;
+                }
+            };
+            form.OnCancel = () => MainContent.Content = null;
+
+            MainContent.Content = form;
         }
 
         private void EditService_Click(object sender, RoutedEventArgs e)
         {
             if (ServiceGrid.SelectedItem is Service selected)
             {
-                var window = new ServiceForm(selected);
-                if (window.ShowDialog() == true)
+                var form = new ServiceForm(new Service
                 {
-                    _context.Services.Update(window.Service);
+                    ServiceId = selected.ServiceId,
+                    Name = selected.Name,
+                    Description = selected.Description,
+                    Price = selected.Price,
+                    Duration = selected.Duration,
+
+                });
+
+                form.OnSave = (updatedService) =>
+                {
+                    selected.Name = updatedService.Name;
+                    selected.Description = updatedService.Description;
+                    selected.Price = updatedService.Price;
+                    selected.Duration = updatedService.Duration;
+
+                    _context.Services.Update(selected);
                     _context.SaveChanges();
                     LoadData();
-                }
+                    MainContent.Content = null;
+                };
+
+                form.OnCancel = () => MainContent.Content = null;
+
+                MainContent.Content = form;
             }
-            else MessageBox.Show("Chọn dịch vụ cần sửa!");
+            else System.Windows.MessageBox.Show("Vui lòng chọn sản phẩm cần sửa!");
         }
 
         private void DeleteService_Click(object sender, RoutedEventArgs e)
         {
             if (ServiceGrid.SelectedItem is Service selected)
             {
-                var result = MessageBox.Show($"Xác nhận xoá dịch vụ \"{selected.Name}\"?", "Xoá", MessageBoxButton.YesNo);
+                var result = System.Windows.MessageBox.Show($"Xác nhận xoá dịch vụ \"{selected.Name}\"?", "Xoá", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
                     _context.Services.Remove(selected);
@@ -72,7 +105,7 @@ namespace PetShop.Views
                     LoadData();
                 }
             }
-            else MessageBox.Show("Chọn dịch vụ cần xoá!");
+            else System.Windows.MessageBox.Show("Chọn dịch vụ cần xoá!");
         }
     }
 }

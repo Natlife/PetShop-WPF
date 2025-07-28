@@ -62,9 +62,11 @@ namespace PetShop.Views
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            Close(); 
+            var userWindow = new LoginView();
+            userWindow.Show();
+            this.Close();
         }
-
+        private void ShowReport_Click(object sender, RoutedEventArgs e) => ShowDashboard();
         private void ShowProducts_Click(object sender, RoutedEventArgs e) => ShowProducts();
         private void ShowServices_Click(object sender, RoutedEventArgs e) => ShowServices();
         private void ShowOrders_Click(object sender, RoutedEventArgs e) => ShowOrders();

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,10 +19,12 @@ namespace PetShop.Views
     /// <summary>
     /// Interaction logic for ServiceForm.xaml
     /// </summary>
-    public partial class ServiceForm : Window
+    public partial class ServiceForm : UserControl
     {
         public Service Service { get; private set; }
         private readonly bool _isEdit;
+        public Action<Service>? OnSave;
+        public Action? OnCancel;
 
         public ServiceForm()
         {
@@ -56,12 +59,14 @@ namespace PetShop.Views
             Service.Price = price;
             Service.Duration = duration;
 
-            DialogResult = true;
+            OnSave?.Invoke(Service);
+            serviceForm.Visibility = Visibility.Collapsed;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = false;
+            OnSave?.Invoke(Service);
+            serviceForm.Visibility = Visibility.Collapsed;
         }
     }
 }

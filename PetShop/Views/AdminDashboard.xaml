@@ -16,11 +16,12 @@
         <StackPanel Background="#333" Grid.Column="0">
             <TextBlock Text="PET SHOP ADMIN" Foreground="White" FontSize="16"
                        FontWeight="Bold" Margin="10" TextAlignment="Center"/>
-            <Button Content="📦 Sản phẩm" Click="ShowProducts_Click" Margin="10" />
-            <Button Content="🛠 Dịch vụ" Click="ShowServices_Click" Margin="10"/>
-            <Button Content="🧾 Đơn hàng" Click="ShowOrders_Click" Margin="10"/>
-            <Button Content="📅 Đặt lịch" Click="ShowBookings_Click" Margin="10"/>
-            <Button Content="🚪 Đăng xuất" Click="Logout_Click" Margin="10" Background="Tomato"/>
+            <Button Content=" Report" Click="ShowReport_Click" Margin="10" />
+            <Button Content=" Sản phẩm" Click="ShowProducts_Click" Margin="10" />
+            <Button Content=" Dịch vụ" Click="ShowServices_Click" Margin="10"/>
+            <Button Content=" Đơn hàng" Click="ShowOrders_Click" Margin="10"/>
+            <Button Content=" Đặt lịch" Click="ShowBookings_Click" Margin="10"/>
+            <Button Content=" Đăng xuất" Click="Logout_Click" Margin="10" Background="Tomato"/>
         </StackPanel>
 
 
