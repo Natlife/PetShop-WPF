@@ -1,4 +1,5 @@
-﻿using PetShop.Models;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using PetShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,39 @@ namespace PetShop.Views
             {
                 MessageBox.Show("Sai email hoặc mật khẩu!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+        private void ShowRegister_Click(object sender, RoutedEventArgs e)
+        {
+            LoginPanel.Visibility = Visibility.Collapsed;
+            RegisterPanel.Visibility = Visibility.Visible;
+        }
+
+        private void ShowLogin_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterPanel.Visibility = Visibility.Collapsed;
+            LoginPanel.Visibility = Visibility.Visible;
+        }
+
+        private void Register_Click(object sender, RoutedEventArgs e)
+        {
+            string fullName = FullNameBox.Text;
+            string email = RegisterEmailBox.Text;
+            string password = RegisterPasswordBox.Password;
+            var newUser = new Models.User
+            {
+                FullName = fullName,
+                Email = email,
+                Password = password,
+                Role = "Customer"
+            };
+            _context.Users.Add(newUser);
+            _context.SaveChanges();
+
+
+            MessageBox.Show("Đăng ký thành công!");
+            var userWindow = new UserHome(newUser);
+            userWindow.Show();
+            this.Close();
         }
     }
 }

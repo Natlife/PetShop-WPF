@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShopConsole", "PetShopCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "consoleTest", "consoleTest\consoleTest.csproj", "{698C1E85-DA0A-470C-9B93-58EC37BAA91A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{718E211C-FD62-4F5A-9B6C-464614EB7BF6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{698C1E85-DA0A-470C-9B93-58EC37BAA91A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{698C1E85-DA0A-470C-9B93-58EC37BAA91A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{698C1E85-DA0A-470C-9B93-58EC37BAA91A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{718E211C-FD62-4F5A-9B6C-464614EB7BF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{718E211C-FD62-4F5A-9B6C-464614EB7BF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{718E211C-FD62-4F5A-9B6C-464614EB7BF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{718E211C-FD62-4F5A-9B6C-464614EB7BF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

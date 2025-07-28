@@ -8,15 +8,34 @@
         Title="LoginView" Height="450" Width="800">
     <Grid>
         <Grid Margin="20">
-            <StackPanel VerticalAlignment="Center">
+            <StackPanel x:Name="LoginPanel" VerticalAlignment="Center">
                 <TextBlock Text="Email" Margin="0,0,0,5"/>
                 <TextBox x:Name="EmailBox" Height="30" />
 
                 <TextBlock Text="Password" Margin="0,10,0,5"/>
                 <PasswordBox x:Name="PasswordBox" Height="30" />
 
-                <Button Content="Đăng nhập" Margin="0,20,0,0" Height="35"
-                    Click="Login_Click"/>
+                <Button Content="Đăng nhập" Margin="0,20,0,5" Height="35"
+                        Click="Login_Click"/>
+                <Button Content="Chưa có tài khoản? Đăng ký" Height="30"
+                        Click="ShowRegister_Click"/>
+            </StackPanel>
+
+            <!-- Đăng ký -->
+            <StackPanel x:Name="RegisterPanel" Visibility="Collapsed" VerticalAlignment="Center">
+                <TextBlock Text="Full Name" Margin="0,0,0,5"/>
+                <TextBox x:Name="FullNameBox" Height="30"/>
+
+                <TextBlock Text="Email" Margin="0,10,0,5"/>
+                <TextBox x:Name="RegisterEmailBox" Height="30" />
+
+                <TextBlock Text="Password" Margin="0,10,0,5"/>
+                <PasswordBox x:Name="RegisterPasswordBox" Height="30" />
+
+                <Button Content="Đăng ký" Margin="0,20,0,5" Height="35"
+                        Click="Register_Click"/>
+                <Button Content="Đã có tài khoản? Đăng nhập" Height="30"
+                        Click="ShowLogin_Click"/>
             </StackPanel>
         </Grid>
     </Grid>
